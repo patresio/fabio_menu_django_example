@@ -6,25 +6,27 @@
             <ul class="list-group list-group-flush">
                 {% for empresa in empresas %}
                     <li class="list-group-item">
-                        <a href="#collapse{{empresa.id}}" class="list-group list-group-flush" data-bs-toggle="collapse" href="#collapse{{empresa.id}}" aria-expanded="false" aria-controls="collapse{{empresa.id}}" role="button">{{ empresa.name }}</a>
+                        <a href="#collapse{{empresa.slug}}" class="list-group list-group-flush" data-bs-toggle="collapse" href="#collapse{{empresa.slug}}" aria-expanded="false" aria-controls="collapse{{empresa.slug}}" role="button">{{ empresa.name }}</a>
         
-                        <div class="collapse" id="collapse{{empresa.id}}">
+                        <div class="collapse" id="collapse{{empresa.slug}}">
                             <ul class="list-group list-group-flush">
                                 {% for area in empresa.areas.all %}
                                     <li class="list-group-item">
-                                        <a href="#collapse{{area.id}}" class="list-group list-group-flush" data-bs-toggle="collapse" href="#collapse{{area.id}}" aria-expanded="false" aria-controls="collapse{{area.id}}" role="button">{{ area.name }}</a>
+                                        <a href="#collapse{{area.slug}}" class="list-group list-group-flush" data-bs-toggle="collapse" href="#collapse{{area.slug}}" aria-expanded="false" aria-controls="collapse{{area.slug}}" role="button">{{ area.name }}</a>
 
-                                        <div class="collapse" id="collapse{{area.id}}">
+                                        <div class="collapse" id="collapse{{area.slug}}">
                                             <ul class="list-group list-group-flush">
                                                 {% for equipamento in area.equipamentos.all %}
                                                     <li class="list-group-item">
-                                                        <a href="#collapse{{equipamento.id}}" class="list list-group-flush" data-bs-toggle="collapse" href="#collapse{{equipamento.id}}" aria-expanded="false" aria-controls="collapse{{equipamento.id}}" role="button">{{ equipamento.name }}</a>
+                                                        <a href="#collapse{{equipamento.slug}}" class="list list-group-flush" data-bs-toggle="collapse" href="#collapse{{equipamento.slug}}" aria-expanded="false" aria-controls="collapse{{equipamento.slug}}" role="button">{{ equipamento.name }}</a>
 
                                                         <div class="collapse" id="collapse{{equipamento.id}}">
                                                             <ul class="list-group list-group-flush">
                                                                 {% for componente in equipamento.componentes.all %}
                                                                     <li class="list-group-item">
                                                                         {{ componente.name }}
+                                                                        {% for proposta in componente.propostas.all %}
+                                                                        {% endfor %}
                                                                     </li>
                                                                 {% endfor %}
                                                             </ul>
